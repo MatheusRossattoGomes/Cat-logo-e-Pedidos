@@ -1,0 +1,16 @@
+services:
+  backend-api:
+    volumes:
+      - ./backend/src:/source/src
+    command: dotnet watch run --urls "http://*:8080"
+
+  frontend-app:
+    # Apenas a instrução 'build' é necessária. 'image' foi removida.
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Impede que o node_modules local sobrescreva o do contêiner
