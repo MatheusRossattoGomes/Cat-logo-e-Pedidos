@@ -1,0 +1,71 @@
+﻿<div class="page-container">
+  <header class="page-header">
+    <h1>Novo Pedido</h1>
+    <a routerLink="/" class="back-button">Voltar para Home</a>
+  </header>
+
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="order-form">
+    <div class="form-section">
+      <h2>1. Cliente</h2>
+      <div class="typeahead-container">
+        <label for="customerSearch">Buscar Cliente</label>
+        <input id="customerSearch" type="text" formControlName="customerSearch" placeholder="Digite o nome do cliente...">
+        <div *ngIf="(customerTypeahead$ | async) as customers" class="typeahead-results">
+          <div *ngFor="let customer of customers" (click)="selectCustomer(customer)" class="typeahead-item">
+            {{ customer.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>2. Adicionar Produtos</h2>
+      <div class="typeahead-container">
+        <label for="productSearch">Buscar Produto</label>
+        <input id="productSearch" type="text" formControlName="productSearch" placeholder="Digite o nome ou SKU do produto...">
+        <div *ngIf="(productTypeahead$ | async) as products" class="typeahead-results">
+          <div *ngFor="let product of products" (click)="addProduct(product)" class="typeahead-item">
+            {{ product.name }} - {{ product.price | currency:'BRL' }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-section">
+        <h2>3. Itens do Pedido</h2>
+        <div class="items-grid-container">
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th class="col-qty">Quantidade</th>
+                        <th class="col-price">Preço Unit.</th>
+                        <th class="col-price">Subtotal</th>
+                        <th class="col-actions">Ações</th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="items">
+                    <tr *ngFor="let item of items.controls; let i = index" [formGroupName]="i">
+                        <td>{{ item.get('productName')?.value }}</td>
+                        <td><input type="number" formControlName="quantity" (input)="updateLineTotal(i)" min="1"></td>
+                        <td class="col-price">{{ item.get('unitPrice')?.value | currency:'BRL' }}</td>
+                        <td class="col-price">{{ item.get('lineTotal')?.value | currency:'BRL' }}</td>
+                        <td class="col-actions"><button type="button" (click)="removeItem(i)" class="btn-delete">Remover</button></td>
+                    </tr>
+                    <tr *ngIf="items.length === 0">
+                        <td colspan="5">Nenhum item adicionado ao pedido.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-section summary">
+        <div class="total-display">
+            <strong>Total do Pedido:</strong>
+            <span>{{ orderForm.get('totalAmount')?.value | currency:'BRL' }}</span>
+        </div>
+        <button type="submit" class="btn-save" [disabled]="orderForm.invalid">Finalizar Pedido</button>
+    </div>
+  </form>
+</div>

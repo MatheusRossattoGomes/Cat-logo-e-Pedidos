@@ -1,0 +1,12 @@
+﻿<div class="page-container">
+  <header class="page-header">
+    <h1>Gestão de Produtos</h1>
+    <a routerLink="/" class="back-button">Voltar para Home</a>
+  </header>
+  <div class="toolbar">
+    <app-add-button (saved)="myGrid.getData()" title="Novo Produto" [fields]="productFields" saveUrl="/api/products"></app-add-button>
+    <app-edit-button (saved)="myGrid.getData()" title="Editar Produto" [fields]="productFields" [item]="selectedItem" getUrl="/api/products" saveUrl="/api/products"></app-edit-button>
+    <app-delete-button deleteUrl="/api/products" [item]="selectedItem" (deleted)="myGrid.getData()"></app-delete-button>
+  </div>
+  <app-grid apiUrl="/api/products" (itemSelected)="selectedItem = $event" #myGrid></app-grid>
+</div>

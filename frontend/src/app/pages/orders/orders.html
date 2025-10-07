@@ -1,0 +1,14 @@
+<div class="page-container">
+  <header class="page-header">
+    <h1>Gestão de Pedidos</h1>
+    <a routerLink="/" class="back-button">Voltar para Home</a>
+  </header>
+
+  <div class="toolbar">
+    <a [routerLink]="['/orders/new']" class="add-button-link">
+        <button class="add-button">Novo Pedido</button>
+    </a>
+  </div>
+
+  <app-grid apiUrl="/api/orders" (itemSelected)="selectedItem = $event" #myGrid></app-grid>
+</div>

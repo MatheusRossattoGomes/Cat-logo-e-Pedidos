@@ -1,0 +1,31 @@
+﻿/* (Estilos da página 'clients.css' e 'products.css' também se aplicam aqui) */
+
+.order-form { display: flex; flex-direction: column; gap: 2rem; }
+.form-section { background-color: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.form-section h2 { margin-top: 0; margin-bottom: 1.5rem; color: #34495e; }
+
+/* Typeahead (Busca dinâmica) */
+.typeahead-container { position: relative; }
+.typeahead-container label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.typeahead-container input { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; }
+.typeahead-results { position: absolute; background: white; width: 100%; border: 1px solid #ccc; border-top: none; max-height: 200px; overflow-y: auto; z-index: 1000; }
+.typeahead-item { padding: 0.75rem; cursor: pointer; }
+.typeahead-item:hover { background-color: #f3f4f6; }
+
+/* Grid de Itens */
+.items-grid-container { overflow-x: auto; }
+.items-table { width: 100%; border-collapse: collapse; }
+.items-table th, .items-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #dfe3e8; }
+.items-table thead { background-color: #f9fafb; }
+.items-table td input[type="number"] { width: 60px; padding: 4px; text-align: center; }
+.col-price { text-align: right; }
+.col-qty { width: 100px; }
+.col-actions { width: 120px; text-align: center; }
+.btn-delete { background-color: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+
+/* Sumário e Botão Salvar */
+.summary { display: flex; justify-content: space-between; align-items: center; }
+.total-display { font-size: 1.5rem; }
+.total-display span { font-weight: 600; color: #2c3e50; margin-left: 1rem; }
+.btn-save { background-color: #27ae60; color: white; border: none; padding: 0.75rem 2rem; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; }
+.btn-save:disabled { background-color: #bdc3c7; cursor: not-allowed; }

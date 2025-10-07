@@ -1,0 +1,33 @@
+<div class="form-container">
+  <h2 mat-dialog-title>{{ title }}</h2>
+  
+  <mat-dialog-content>
+    <form [formGroup]="form" id="entity-form" class="entity-form">
+      <div *ngFor="let field of fields" class="form-field">
+        <label [for]="field.name">{{ field.label }}<span *ngIf="field.required">*</span></label>
+        
+        <input *ngIf="field.type !== 'checkbox'"
+          [type]="field.type"
+          [id]="field.name"
+          [formControlName]="field.name"
+          [ngClass]="{'invalid-field': form.get(field.name)?.invalid && form.get(field.name)?.touched}">
+        
+        <div *ngIf="field.type === 'checkbox'" class="checkbox-wrapper">
+            <input 
+              [type]="field.type"
+              [id]="field.name"
+              [formControlName]="field.name">
+        </div>
+
+        <div *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched" class="error-message">
+          Campo obrigatório.
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="submit" form="entity-form" [disabled]="form.invalid" (click)="onSave()">Salvar</button>
+  </mat-dialog-actions>
+</div>

@@ -1,0 +1,36 @@
+<p>home works!</p>
+<div class="container">
+  <header class="header">
+    <h1>Catálogo e Pedidos</h1>
+    <p>Sistema de Gestão - Full Stack</p>
+  </header>
+
+  <main class="main-content">
+    <div class="navigation-cards">
+      <div class="card" [routerLink]="['/clients']">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h2>Clientes</h2>
+        <p>Gerencie cadastros de clientes</p>
+        <a class="card-button">Acessar Clientes</a>
+      </div>
+
+      <div class="card" [routerLink]="['/products']">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="22" height="18" rx="2" ry="2"/><polyline points="1 8 12 15 23 8"/></svg></div>
+        <h2>Produtos</h2>
+        <p>Gerencie catálogo de produtos</p>
+        <a class="card-button">Acessar Produtos</a>
+      </div>
+
+      <div class="card" [routerLink]="['/orders']">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+        <h2>Pedidos</h2>
+        <p>Crie e gerencie pedidos</p>
+        <button class="card-button">Acessar Pedidos</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Desafio Técnico — Full-Stack .NET 8 + Angular 17+</p>
+  </footer>
+</div>
